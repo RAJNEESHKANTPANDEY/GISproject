@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+                        <html>
+                          <head>
+                            <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+    
+                            <meta name='viewport' content='initial-scale=1, maximum-scale=1,user-scalable=no'>
+                            <title>Sample Application</title>
+                            <link rel='stylesheet' href='https://js.arcgis.com/3.35/esri/css/esri.css'/>
+                            <style>
+                              html, body, #mapDiv{
+                                padding: 0;
+                                margin: 0;
+                                height: 100%;
+                              }
+                            </style>
+                            <script src='https://js.arcgis.com/3.35/'></script>
+                            <script>
+                              var map;
+
+                              require(['esri/dijit/BasemapLayer', 'esri/dijit/Basemap',
+                                'esri/map','esri/geometry/Extent','esri/SpatialReference',
+                                'esri/layers/ArcGISDynamicMapServiceLayer','esri/layers/ArcGISTiledMapServiceLayer'
+                              ], function (BasemapLayer, Basemap,
+                                Map,Extent,SpatialReference, ArcGISDynamicMapServiceLayer,ArcGISTiledMapServiceLayer) {
+                                var nobasemap = new Basemap({layers: [new BasemapLayer({url: 'http://services.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer', opacity: 0})]});
+                                map = new Map('mapDiv', {logo:false,showAttribution:false,basemap:nobasemap
+                                });map.addLayer(new ArcGISDynamicMapServiceLayer('https://mapservice.gov.in/gismapservice/rest/services/BharatMapService/State_Boundary/MapServer?Token=8yGuSgCRjjRWGy-kJsMoIya4gmbdLcd-hvTsIQ77AtbrOk8zx_pgBb2dAdNBzqld'));
+                                map.addLayer(new ArcGISDynamicMapServiceLayer('https://mapservice.gov.in/gismapservice/rest/services/BharatMapService/District_Boundary/MapServer?Token=Xg3twvh51Bdn3JtT0We6YWcPLoW_t7brbYJohtiFcxGOb-Q09ztS7sxLdU-JJtu0'));
+map.addLayer(new ArcGISDynamicMapServiceLayer('https://mapservice.gov.in/gismapservice/rest/services/BharatMapService/Block_Boundary/MapServer?Token=WZdn13ErPgNi4hbOvU05x4rtzt9owsNDFa7wkWMPZXrFHHHfIBODnZxBgM-QxXis'));
+map.addLayer(new ArcGISDynamicMapServiceLayer('https://mapservice.gov.in/gismapservice/rest/services/BharatMapService/Population_Density/MapServer?Token=gqclJyihw3k_QnfN_CHfsEXqr92u_YucegdlaNPeB23ljbQx6DgEteO3qtlmisxU'));
+map.addLayer(new ArcGISDynamicMapServiceLayer('https://mapservice.gov.in/gismapservice/rest/services/BharatMapService/GramPanchayat_Boundary/MapServer?Token=_sj4rFB80ys4CmYRiZEx5X3AHtcAc3opK5JQRS5aGYgr2BkSuSWxe1YCazZ4i31G'));
+map.addLayer(new ArcGISDynamicMapServiceLayer('https://mapservice.gov.in/gismapservice/rest/services/BharatMapService/Village_Boundary/MapServer?Token=qkY4NYKfxOnOW4rH-9oVNtqCgypGib1ABpC7SgVHrxwvo_5egRsRfu7u5Q1mkelN'));
+map.addLayer(new ArcGISDynamicMapServiceLayer('https://mapservice.gov.in/gismapservice/rest/services/BharatMapService/SH/MapServer?Token=JsFlTikpFtNG6uzNFPBJILzPZBsTw9gCySfJmnn_1acMJ_vc2mE8QtIpJLWo_9E8'));
+map.addLayer(new ArcGISDynamicMapServiceLayer('https://mapservice.gov.in/gismapservice/rest/services/BharatMapService/NH/MapServer?Token=vHydUD_gT4jZE_pzOjk_knvWYlLiyVp0O_RPbgI_uhQCCTpz93L9oBT3L3AxpBqD'));
+map.addLayer(new ArcGISDynamicMapServiceLayer('https://mapservice.gov.in/gismapservice/rest/services/BharatMapService/Railway/MapServer?Token=CqK33f2ylZRrnCXS9eoty220S-bKRQf8NoIBTkG0oG3KCe8ADzwlOoi9lzECcgW0'));
+map.addLayer(new ArcGISDynamicMapServiceLayer('https://mapservice.gov.in/gismapservice/rest/services/BharatMapService/Admin_Boundary_District/MapServer?Token=4UDt3Nw7VZHVwdiNCUdQg3qok-r_ulA7CmLQiaf8znlfKVkL3kz9cntUpUIY7Po5'));
+map.addLayer(new ArcGISDynamicMapServiceLayer('https://mapservice.gov.in/gismapservice/rest/services/BharatMapService/Admin_Boundary_Village/MapServer?Token=Ysi3ZSUAM_fr47ipVlhpH3_RdYDzMOYGp4FjZQ19EPKhCjaBH3o761OLrhKTRUJE'));
+map.addLayer(new ArcGISDynamicMapServiceLayer('https://mapservice.gov.in/gismapservice/rest/services/BharatMapService/Admin_Boundary_GramPanchayat/MapServer?Token=_sj4rFB80ys4CmYRiZEx5XnZFqsmDosXD8y-1WYU4ZpJ5IGUQ6MrlXpAnOLUfTro'));
+map.addLayer(new ArcGISDynamicMapServiceLayer('https://mapservice.gov.in/gismapservice/rest/services/BharatMapService/Admin_Head_Quarter/MapServer?Token=SmOqxekrlz85f05bqooN5kyyT87bm6-aaBnlkkfRvKHQxw2vfJ22HLinksvcSt69'));
+map.addLayer(new ArcGISDynamicMapServiceLayer('https://mapservice.gov.in/gismapservice/rest/services/BharatMapService/Road_Rail/MapServer?Token=bosC44DQ1_Q9yoXN1FrD1vvgm-l56Z4HSTuSaCGpQXG-3wuDNCY-q0RjsuY7VoRG'));
+map.addLayer(new ArcGISDynamicMapServiceLayer('https://mapservice.gov.in/gismapservice/rest/services/BharatMapService/River/MapServer?Token=ZhrKaI2PYALXaBvZ1De8TMm2nA2PenN93BECdOM2AK5a5B-0aTGBaVAfOMokQuf4'));
+map.addLayer(new ArcGISDynamicMapServiceLayer('https://mapservice.gov.in/gismapservice/rest/services/BharatMapService/Watershed/MapServer?Token=tjga4LsKHsVDtas7ziUTn-w0dAWc1vW90isgRgZXMACB7cZTREao2K_kUWCgMnFb'));
+map.addLayer(new ArcGISDynamicMapServiceLayer('https://mapservice.gov.in/gismapservice/rest/services/BharatMapService/Forest/MapServer?Token=3RZiGICVanNp3ViK9ZHPlLbJ3ZXnz0QSRdDXBmnyMWU-kK-z5oDXgnhZnFpbDF3P'));
+map.addLayer(new ArcGISDynamicMapServiceLayer('https://mapservice.gov.in/gismapservice/rest/services/BharatMapService/AC_PC/MapServer?Token=49LP4VIXHav-w3qx1jbaDSh5bZtxN081HIlXJrLjpf8szpPDk67sRh60XvAIg5k7'));
+
+// var street = new ArcGISTiledMapServiceLayer('https://mapservice.gov.in/mapserviceserv176/rest/services/Street/StreetMap/MapServer?Token=M4qhFHz7APYgfh61PMdMoYmeqAc7JklRPqjd4AYCxf91AIADne0x9APdlJjQ1WUV');map.addLayer(street);map.reorderLayer(street,0);
+ map.setExtent(new Extent(66.62, 5.23, 98.87, 38.59, new SpatialReference({ wkid: 4326 })),true);
+                              });
+                            </script>
+                          </head>
+                          <body>
+                            <p>Rajneesh is a good boy.</p>
+                            <div id='mapDiv'></div>
+                          </body>
+                        </html>
